@@ -8,9 +8,11 @@ pipeline {
     }
 
     stage('push') {
+      steps {
         withDockerRegistry([credentialsId: 'dockerhub', url: 'registry.cn-hangzhou.aliyuncs.com']) {
             sh 'docker push registry.cn-hangzhou.aliyuncs.com/k8s-mirrors/kube-app:$BUILD_NUMBER'
         }
+      }
     }
   }
 }
