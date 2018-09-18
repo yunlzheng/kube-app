@@ -49,7 +49,6 @@ pipeline {
             input 'Do you approve dev?'
             sh 'helm upgrade kube-app-dev --install --namespace=yunlong helm/kube-app'
         }
-      }
     }
 
   }
