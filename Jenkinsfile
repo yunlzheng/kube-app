@@ -17,6 +17,11 @@ pipeline {
 
     stage('push chart') {
 
+      environment {
+        HELM_USERNAME = credentials('HELM_USERNAME')
+        HELM_PASSWORD = credentials('HELM_PASSWORD')
+      }
+
       steps {
         script {
             def filename = 'helm/kube-app/values.yaml'
