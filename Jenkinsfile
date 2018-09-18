@@ -43,5 +43,14 @@ pipeline {
         sh 'helm push helm/kube-app https://repomanage.rdc.aliyun.com/helm_repositories/1148-test --username=$HELM_USERNAME --password=$HELM_PASSWORD  --version=$BUILD_NUMBER'
       }
     }
+
+    stage('Deploy To Dev') {
+      steps {
+            input 'Do you approve dev?'
+            sh 'helm upgrade kube-app-dev --install --namespace=yunlong helm/kube-app'
+        }
+      }
+    }
+
   }
 }
