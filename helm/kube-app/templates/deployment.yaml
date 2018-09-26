@@ -7,6 +7,10 @@ metadata:
     chart: {{ template "kube-app.chart" . }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
+   annotations:
+    k8s.io/should_be_scraped: "true"
+    k8s.io/metric_path: /actuator/prometheus
+    k8s.io/metric_port: "7001"
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
